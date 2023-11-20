@@ -48,6 +48,11 @@ export class SimcardListComponent implements OnInit {
     this.currentIndex = index;
   }
 
+  newSimcard(): void{
+    this.router.navigate(['/simcards/new'])
+  }
+
+
   removeAllSimcards(): void {
     this.simcardService.deleteAll()
       .subscribe({

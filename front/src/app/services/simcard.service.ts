@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Simcard } from '../models/simcard.model';
+import { environment } from '../../environment/environment';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ export class SimcardService {
 
   constructor(private http: HttpClient) { }
 
-  private baseUrl = 'http://debian-noir:8080/api/simcards';
+  private baseUrl = environment.api;
 
   getAll(): Observable<Simcard[]> {
     return this.http.get<Simcard[]>(this.baseUrl);
