@@ -16,6 +16,14 @@ services:
     build: ./api
     ports:
       - 8080:8080
+    environment:
+      SPRING_APPLICATION_JSON: '{
+        "spring.datasource.url"  : "jdbc:mysql://mysqldb:3306/dust?useSSL=false",
+        "spring.datasource.username" : "root",
+        "spring.datasource.password" : "root",
+        "spring.jpa.properties.hibernate.dialect" : "org.hibernate.dialect.MySQLDialect",
+        "spring.jpa.hibernate.ddl-auto" : "update"
+      }'
 
   front:
     depends_on:
