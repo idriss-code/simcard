@@ -1,3 +1,5 @@
 FROM mysql:latest
 
-ADD simcards.sql /docker-entrypoint-initdb.d
+COPY setup.sh /mysql/setup.sh
+COPY simcards.sql /mysql/setup.sql
+RUN /mysql/setup.sh
