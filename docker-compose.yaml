@@ -5,10 +5,11 @@ services:
     command: --default-authentication-plugin=mysql_native_password
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: dust
     ports:
       - 3306:3306
     volumes:
-      - ./db/simcards.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./db:/docker-entrypoint-initdb.d
   
   api:
     depends_on:
