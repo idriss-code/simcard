@@ -4,19 +4,26 @@ import { Simcard } from '../../models/simcard.model';
 import { SimcardService } from '../../services/simcard.service';
 import { SimcardDetailsComponent } from '../simcard-details/simcard-details.component';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { SimcardStatus } from '../../enums/status';
 
 @Component({
   selector: 'app-simcard-list',
   standalone: true,
-  imports: [CommonModule,SimcardDetailsComponent],
+  imports: [CommonModule,SimcardDetailsComponent,FormsModule],
   templateUrl: './simcard-list.component.html',
   styleUrl: './simcard-list.component.scss'
 })
 export class SimcardListComponent implements OnInit {
 
   simcards?: Simcard[];
+
+  filteredSimcards?: Simcard[];
   currentSimcard: Simcard = {};
   currentIndex = -1;
+  filter: string = '';
+
+  activeOnly = false;
   
   constructor(
     private simcardService: SimcardService,
@@ -32,11 +39,13 @@ export class SimcardListComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.simcards = data;
+          this.changeFilter()
           console.log(data);
         },
         error: (e) => console.error(e)
       });
   }
+
   refreshList(): void {
     this.retrieveSimcard();
     this.currentSimcard = {};
@@ -79,4 +88,8 @@ export class SimcardListComponent implements OnInit {
     this.router.navigate(['/simcards',id])
   }
   
+  changeFilter() {
+    this.filteredSimcards = this.simcards?.filter((s:Simcard) => s.iccid?.includes(this.filter) && (!this.activeOnly || s.status == SimcardStatus.ACTIVATED))
+  }
+
 }
