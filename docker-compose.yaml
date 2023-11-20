@@ -29,5 +29,7 @@ services:
     depends_on:
       - mysqldb
     build: ./front
+    environment:
+      API_ADDR: debian-noir
     ports:
       - 80:80

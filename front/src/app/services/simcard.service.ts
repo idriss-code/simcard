@@ -11,7 +11,7 @@ export class SimcardService {
 
   constructor(private http: HttpClient) { }
 
-  private baseUrl = 'http://localhost:8080/api/simcards';
+  private baseUrl = 'http://debian-noir:8080/api/simcards';
 
   getAll(): Observable<Simcard[]> {
     return this.http.get<Simcard[]>(this.baseUrl);
