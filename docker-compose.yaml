@@ -13,8 +13,7 @@ services:
   
   api:
     depends_on:
-      mysqldb:
-        condition: service_completed_successfully
+      - mysqldb
     build: ./api
     ports:
       - 8080:8080
