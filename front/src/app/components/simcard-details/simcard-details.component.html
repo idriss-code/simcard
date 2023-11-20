@@ -1,0 +1,49 @@
+<div *ngIf="currentSimcard.iccid">
+
+    <h4>Simcard</h4>
+    <div>
+        <label><strong>iccid:</strong></label>
+        {{ currentSimcard.iccid }}
+    </div>
+
+    <div>
+        <label><strong>msisdn:</strong></label>
+        {{ currentSimcard.msisdn }}
+    </div>
+
+    <div>
+        <label><strong>pinCode:</strong></label>
+        {{ currentSimcard.pinCode }}
+    </div>
+
+    <div>
+        <label><strong>pukCode:</strong></label>
+        {{ currentSimcard.pukCode }}
+    </div>
+
+    <div>
+        <label><strong>tag:</strong></label>
+        {{ currentSimcard.tag }}
+    </div>
+
+    <div>
+        <label><strong>ipAddr:</strong></label>
+        {{ currentSimcard.ipAddr }}
+    </div>
+
+    <div>
+        <label><strong>accessPointName:</strong></label>
+        {{ currentSimcard.accessPointName }}
+    </div>
+
+    <div>
+        <label><strong>Status:</strong></label>
+        {{ currentSimcard.status }}
+    </div>
+
+    <div>
+        <label><strong>creationDate:</strong></label>
+        {{ currentSimcard.creationDate | date }}
+    </div>
+
+</div>

@@ -1,0 +1,106 @@
+<div *ngIf="currentSimcard.iccid || !isUpdate ;else no_sim" class="edit-form">
+
+    <h4>Simcard {{ currentSimcard.iccid }}</h4>
+    <form>
+
+      <div *ngIf="!isUpdate" class="form-group">
+        <label for="iccid">iccid</label>
+        <input
+          type="text"
+          class="form-control"
+          id="iccid"
+          [(ngModel)]="currentSimcard.iccid"
+          name="iccid"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="msisdn">msisdn</label>
+        <input
+          type="text"
+          class="form-control"
+          id="msisdn"
+          [(ngModel)]="currentSimcard.msisdn"
+          name="msisdn"
+        />
+      </div>
+      <div class="form-group">
+        <label for="pinCode">pinCode</label>
+        <input
+          type="text"
+          class="form-control"
+          id="pinCode"
+          [(ngModel)]="currentSimcard.pinCode"
+          name="pinCode"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="pukCode">pukCode</label>
+        <input
+          type="text"
+          class="form-control"
+          id="pukCode"
+          [(ngModel)]="currentSimcard.pukCode"
+          name="pukCode"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="tag">tag</label>
+        <input
+          type="text"
+          class="form-control"
+          id="tag"
+          [(ngModel)]="currentSimcard.tag"
+          name="tag"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="accessPointName">accessPointName</label>
+        <input
+          type="text"
+          class="form-control"
+          id="accessPointName"
+          [(ngModel)]="currentSimcard.accessPointName"
+          name="accessPointName"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="description">ipAddr</label>
+        <input
+          type="text"
+          class="form-control"
+          id="ipAddr"
+          [(ngModel)]="currentSimcard.ipAddr"
+          name="ipAddr"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="status">status</label>
+        <select 
+        id="status"
+        class="form-control"
+        >
+          <option *ngFor="let status of eSimcardStatus | keyvalue" [ngValue]="status.value">{{status.value}}</option>
+        </select>
+      </div>
+    </form>
+
+    <button
+      type="submit"
+      class="btn btn-primary mt-2"
+      (click)="updateSimcard()"
+    >
+      {{ isUpdate ? 'Update' : 'Send'}}
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <ng-template #no_sim>
+    <br />
+    <p>Cannot access this Simcard...</p>
+  </ng-template>
